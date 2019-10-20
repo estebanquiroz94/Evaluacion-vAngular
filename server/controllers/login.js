@@ -17,6 +17,7 @@ function authenticateUser(req, res){
         //Search the user login
         user.find({email: userLogin, password: passLogin}, function(err, userFound)
         {
+            //Validation for error
             if(err)
             {
                 console.log('An error ocurred');
@@ -24,10 +25,12 @@ function authenticateUser(req, res){
             }
             else
             {
+                //User not found
                 if(!userFound){
                 res.status(404).send({answerPetiton: 'Can not found user'})
             }
 
+            //Validate if found user
             if(userFound.length > 0){            
                 answer = 'validated';
             }
@@ -37,11 +40,8 @@ function authenticateUser(req, res){
             }
         }).count();
         
-        console.log('ni culo');
-        
     } catch (error) {
         console.log(error);
     }
 }
-
 module.exports = {authenticateUser}
