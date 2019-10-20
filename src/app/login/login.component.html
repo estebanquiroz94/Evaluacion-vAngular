@@ -21,10 +21,10 @@
               </div>
               <br>
               <div class="form-group row">
-                <label class="validationLogin">{{prueba}}</label>
+                <label *ngIf="!isValid" class="denegateAccess">{{validationMessage}}</label>
               </div>
           </div>
-        </form>>
+        </form>
     </div>
   </div>
 </div>
