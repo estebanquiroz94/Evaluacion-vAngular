@@ -1,7 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const url = 'mongodb://localhost:27017';
-const dbName = 'EvaluacionFinalvAngular2';
+const dbName = 'EvaluacionFinalvAngular';
 
 //Establece la conexión a BD
 MongoClient.connect(url, function(err, client){
@@ -19,12 +19,11 @@ MongoClient.connect(url, function(err, client){
   let coleccion = db.collection("users")
 
   coleccion.insertMany([
-    {email: "jq@gmail.com", nombre:"Juan", password: "juanchito25", fechaNacimiento:"2000/07/15"},
-    {email: "valeria@gmail.com", nombre:"Valeria ", password: "vale123", fechaNacimiento:"1994/07/20"},
-    {email: "ddaniela@gmail.com", nombre:"Daniela", password: "danidani", fechaNacimiento:"1989/07/15"},
+    {email: "jq@gmail.com", name:"Juan", password: "123"},
+    {email: "valeria@gmail.com", name:"Valeria ", password: "567"},
+    {email: "ddaniela@gmail.com", name:"Daniela", password: "098"},
   ], (error, result) => {
       console.log('Resultado: ');
-      
-    console.log(result)
+      console.log(result)
   });
 });
