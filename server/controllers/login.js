@@ -15,7 +15,7 @@ var user = require('../models/user');
 console.log(userLogin);
 console.log(passLogin);
 console.log('antes de buscar');
-
+console.log('Ejecución');
     user.find({email: userLogin, password: passLogin}), function(err, userFound){
         console.log(err);
         
