@@ -33,6 +33,7 @@ export class LoginComponent {
         }
         else
         {
+          this.validationMessage = "";
           // Create a new instance for to view products catalog
         }
       }
