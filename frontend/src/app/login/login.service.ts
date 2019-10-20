@@ -4,7 +4,7 @@ import 'rxjs/Rx'
 @Injectable()
 export class LoginService {
 
-  urlBase: string = 'http://localhost:3008/api/';
+  initialUrl: string = 'http://localhost:3008/api/';
 data: any;
   constructor(private _http : Http) {
     
@@ -13,19 +13,14 @@ data: any;
    //Validate login for user and password
    validateUser(email, password){
 
-    console.log('Ingresó al servicio usuario:');
-    console.log(email);
-    console.log('Con clave:');
-    console.log(password);
-
-    console.log('Before execute authenticateUser');
-    var urlFinal = this.urlBase+'login';
-    console.log('urlFinal :: '+urlFinal);
+    //Create all url
+    var finalUrl = this.initialUrl+'login';
     
+    //Instance of parameters that will be send 
     let datos = {"email" : email, "pass": password}
-    console.log(datos);
 
-    var result =  this._http.post(urlFinal, datos)
+    //Start petition for API Backend
+    var result =  this._http.post(finalUrl, datos)
     .map((response: Response) => response.json())
     
     return result;
