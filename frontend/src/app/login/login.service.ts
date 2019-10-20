@@ -5,7 +5,7 @@ import 'rxjs/Rx'
 export class LoginService {
 
   urlBase: string = 'http://localhost:3008/api/';
-
+data: any;
   constructor(private _http : Http) {
     
    }
@@ -28,9 +28,7 @@ export class LoginService {
     var result =  this._http.post(urlFinal, datos)
     .map((response: Response) => response.json())
     
-    console.log(result);
-
     return result;
-    
+   
    }
 }

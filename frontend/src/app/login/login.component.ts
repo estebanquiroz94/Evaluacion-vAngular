@@ -11,15 +11,28 @@ import { Response } from '@angular/http';
 })
 export class LoginComponent {
    
-  prueba :string;
+  validationMessage :string;
+  isValid :boolean;
+
   constructor(private _loginService: LoginService){
   }
 
   sendForm(form){
-    this.prueba = "Error inicio sesión";
+
     this._loginService.validateUser(form.value.email, form.value.password)
     .subscribe(
-      (data: Response) => console.log(data)
+      (data: Response) => 
+      {             
+        if (data["answerPetition"] != "validated") 
+        {
+          this.validationMessage = "Error en el inicio sesión";
+          this.isValid = false;
+        }
+        else
+        {
+          // 
+        }
+      }
     )
   }
 }
