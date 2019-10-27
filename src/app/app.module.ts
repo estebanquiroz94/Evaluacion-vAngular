@@ -6,17 +6,26 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import {LoginService} from './login/login.service';
 import { CatalogComponent } from './catalog/catalog.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { BarraNavegacionComponent } from './barra-navegacion/barra-navegacion.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductUiComponent } from './product-ui/product-ui.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CatalogComponent
+    CatalogComponent,
+    BarraNavegacionComponent,
+    ProductsComponent,
+    ProductUiComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule, 
+    AppRoutingModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import {LoginService} from 'app/login/login.service';
 import { Response } from '@angular/http';
+import { Router, ActivatedRoute, Route } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent {
   isValid :boolean;
 
   //Constructor
-  constructor(private _loginService: LoginService){
+  constructor(private _loginService: LoginService, private _route: Router){
   }
 
   //Process info User Login
@@ -33,6 +34,8 @@ export class LoginComponent {
         }
         else
         {
+          this.validationMessage = "";
+          this._route.navigate(['viewCatalog']);
           // Create a new instance for to view products catalog
         }
       }
