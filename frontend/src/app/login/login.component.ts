@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
 import {LoginService} from '../login/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,16 +15,19 @@ export class LoginComponent {
   isValid :boolean;
 
   //Constructor
-  constructor(private _loginService: LoginService){
+  constructor(private _loginService: LoginService, private router: Router){
   }
 
   //Process info User Login
   sendForm(form){
+  console.log('envió formulario');
 
     this._loginService.validateUser(form.value.email, form.value.password)
     .subscribe(
       (data: Response) => 
       {             
+        console.log(data);
+        
         //Validate response from API nodeJs
         if (data["answerPetition"] != "validated") 
         {
@@ -34,6 +38,7 @@ export class LoginComponent {
         {
           this.validationMessage = "";
           // Create a new instance for to view products catalog
+          this.router.navigate(['/viewCatalog']);
         }
       }
     )

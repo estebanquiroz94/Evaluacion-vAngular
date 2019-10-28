@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-// import { Http, Response } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 
 
 @Component({
@@ -22,7 +22,7 @@ export class ProductsComponent {
   {nameProduct: 'Carenepe', image: '', price: '1000', unitsAvailable: 1}
 ]
 
-  constructor(/*private _http: Http*/) 
+  constructor(private _httpClient: HttpClient) 
   { 
     var finalUrl = this.initialUrl+"loadProducts"
 

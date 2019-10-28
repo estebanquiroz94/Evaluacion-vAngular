@@ -8,6 +8,7 @@ import { BarraNavegacionComponent } from './barra-navegacion/barra-navegacion.co
 import { ProductsComponent } from './products/products.component';
 import { ProductsUiComponent } from './products-ui/products-ui.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,9 +22,13 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    HttpClient,
+    HttpClientModule
+  ],
   bootstrap: [LoginComponent]
 })
 export class AppModule { }
