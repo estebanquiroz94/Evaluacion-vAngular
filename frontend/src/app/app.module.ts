@@ -1,26 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule, Http } from '@angular/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import {LoginService} from './login/login.service';
 import { CatalogComponent } from './catalog/catalog.component';
+import { BarraNavegacionComponent } from './barra-navegacion/barra-navegacion.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductsUiComponent } from './products-ui/products-ui.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CatalogComponent
+    CatalogComponent,
+    BarraNavegacionComponent,
+    ProductsComponent,
+    ProductsUiComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule, 
     AppRoutingModule
   ],
-  providers: [LoginService],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [LoginComponent]
 })
 export class AppModule { }

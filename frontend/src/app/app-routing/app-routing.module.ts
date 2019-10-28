@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from '../login/login.component'
-import { CatalogComponent } from 'app/catalog/catalog.component';
+import { CatalogComponent } from '../catalog/catalog.component';
+import { BarraNavegacionComponent } from '../barra-navegacion/barra-navegacion.component';
 
 const routes: Routes = [
   {path:'', component: LoginComponent},
-  {path:'viewCatalog/:usuario', component: CatalogComponent}
+  {path:'viewCatalog', component: CatalogComponent},
+  {path:'navBar', component: BarraNavegacionComponent}
 ]
 
 @NgModule({
