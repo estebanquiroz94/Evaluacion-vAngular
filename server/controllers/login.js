@@ -25,6 +25,8 @@ function authenticateUser(req, res){
             }
             else
             {
+                console.log('Bad User Autenticated');
+                
                 //User not found
                 if(!userFound){
                 res.status(404).send({answerPetiton: 'Can not found user'})
@@ -33,6 +35,8 @@ function authenticateUser(req, res){
             //Validate if found user
             if(userFound.length > 0){            
                 answer = 'validated';
+                console.log('User Succesfull');
+                
             }
             
             //Generate response validate login
