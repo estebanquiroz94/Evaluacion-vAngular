@@ -1,10 +1,19 @@
 <div class="product card" style="width: 16rem;">
-<img src="..." class="card-img-top" alt="...">
+<img src={{product.image}} class="card-img-top img-product" alt=".....">
     <div class="card-body">
         <h5 class="card-title">{{product.nameProduct}}</h5>
         <p class="card-text">Precio: {{product.price}} $</p>
         <p class="card-text">Unidades Disponibles:{{product.unitsAvailable}}</p>
-        <a href="#" class="btn btn-primary">Ver más</a>
-        <a href="#" class="btn btn-warning">Añadir</a>
+        <div class="row">
+            <div class="col-md-5">
+                <a href="#" class="btn btn-primary btn-sm">Ver más</a>
+            </div>
+            <div class="col-md-2 offset-md-1">
+                <a href="#" class="btn btn-warning btn-sm">Añadir</a>
+            </div>
+            <div class="col-md-1 offset-md-1">
+                <input type="number" name="points" step="1">
+            </div>
+        </div>
     </div>
 </div>
