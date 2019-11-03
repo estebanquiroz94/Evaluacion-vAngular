@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 //rutas
 var loginRoute = require('./routes/login');
-//var productsRoute = require('./routes/products');
+var productsRoute = require('./routes/products');
 
 //configuracion de cabeceras
 app.use((req, res, next) => {
@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 
 //rutas base
 app.use('/api', loginRoute);
-//app.use('/api', productsRoute);
+app.use('/api', productsRoute);
 // console.log('finaliza proceso de app.js');
 
 module.exports = app;
