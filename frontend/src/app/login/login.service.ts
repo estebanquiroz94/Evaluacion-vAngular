@@ -22,7 +22,7 @@ export class LoginService {
     console.log('Antes de ejecutar peticion');
     
     //Start petition for API Backend
-    this.data =  this._httpClient.post(finalUrl, datos)
+    this.data = this._httpClient.post(finalUrl, datos)
     .map((response: Response) => response)
     
     return this.data;
