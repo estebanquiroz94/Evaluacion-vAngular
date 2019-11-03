@@ -4,6 +4,8 @@ var express = require('express');
 var productsController = require('../controllers/products.js');
 var api = express.Router();
 
-console.log('Instance Products');
+console.log('Instance function Products');
 
-api.get('/getProducts')
+api.get('/getAllProducts',productsController.getAllProducts)
+
+module.exports = api;
