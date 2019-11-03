@@ -17,8 +17,8 @@ export class ProductsComponent {
   {nameProduct: 'Ajo', image: '../../assets/img/ajo.jpg', price: '5', unitsAvailable: 20},
   {nameProduct: 'Almendras', image: '../../assets/img/almendras.jpg', price: '35', unitsAvailable: 800},
   {nameProduct: 'Arándanos', image: '../../assets/img/arandanos.jpg', price: '30', unitsAvailable: 500},
-  {nameProduct: 'Brócoli', image: '../../assets/img/brocoli.jpg', price: '80', unitsAvailable: 450},
-  {nameProduct: 'Guayaba', image: '../../assets/img/guayaba.jpg', price: '10', unitsAvailable: 280}
+  {nameProduct: 'Brócoli', image: '../../assets/img/brocoli.png', price: '80', unitsAvailable: 450},
+  {nameProduct: 'Guayaba', image: '../../assets/img/guayaba.png', price: '10', unitsAvailable: 280}
 ]
 
   constructor(private _httpClient: HttpClient) 
