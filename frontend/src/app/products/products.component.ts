@@ -1,4 +1,4 @@
-;import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductService} from './product.service';
 
 
@@ -10,9 +10,10 @@ import { ProductService} from './product.service';
 export class ProductsComponent {
 
   @Input() product : any;
-  
-  products2 :any[]
-  products :Product[] = []
+
+  products :Product[] = [];
+  productsCopy :Product[] = [];
+  filterProducts :Product[] = [];
 
   constructor(private _productService: ProductService) 
   {    
@@ -27,6 +28,33 @@ export class ProductsComponent {
         });        
         
       })
+
+      this.productsCopy = this.products;
+  }
+
+  applyFilterProducts(param: any){
+
+    console.log(param.target.value);
+    
+    
+    if(param.target.value == ""){
+    this.products = [];
+    this.products = this.productsCopy;
+    }
+    else
+    {
+      this.filterProducts = [];
+      
+      this.productsCopy.forEach(element =>
+      {
+        if(element.nameProduct.includes(param.target.value)){
+          this.filterProducts.push(element);
+        }
+      });
+
+      this.products = []
+      this.products = this.filterProducts;
+    }
   }
 }
 

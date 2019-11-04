@@ -9,7 +9,7 @@
             <p>¿Que estas buscando?</p>
           </div>
           <div class="col-sm-12 search">
-            <input type="input-group-text" placeholder="Buscar Producto">
+            <input type="input-text" placeholder="Buscar producto" (keyup)="applyFilterProducts($event)">
           </div>
         </div>
       </div>
