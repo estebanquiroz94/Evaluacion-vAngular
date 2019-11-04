@@ -33,11 +33,9 @@ export class ProductsComponent {
   }
 
   applyFilterProducts(param: any){
-
-    console.log(param.target.value);
     
-    
-    if(param.target.value == ""){
+    if(param.target.value == "")
+    {
     this.products = [];
     this.products = this.productsCopy;
     }
@@ -47,7 +45,7 @@ export class ProductsComponent {
       
       this.productsCopy.forEach(element =>
       {
-        if(element.nameProduct.includes(param.target.value)){
+        if(element.nameProduct.toLocaleLowerCase().includes(param.target.value.toLocaleLowerCase())){
           this.filterProducts.push(element);
         }
       });
