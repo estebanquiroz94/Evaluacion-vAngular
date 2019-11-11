@@ -9,6 +9,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductsUiComponent } from './products-ui/products-ui.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
+import { ViewMoreComponent } from './view-more/view-more.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http'
     CatalogComponent,
     BarraNavegacionComponent,
     ProductsComponent,
-    ProductsUiComponent
+    ProductsUiComponent,
+    ViewMoreComponent
   ],
   imports: [
     BrowserModule,
