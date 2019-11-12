@@ -3,5 +3,5 @@ class Product {
     nameProduct: String;
     image: String;
     price: String;
-    unitsAvaliable: String
+    unitsAvailable: String
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'products-ui',
@@ -9,9 +11,13 @@ export class ProductsUiComponent {
 
   @Input() product:any;
 
-  constructor() 
+  constructor(private _router: Router) 
   {
-    console.log(this.product);
+ 
   }
 
+  viewMoreProduct(product){
+    let result = JSON.stringify(product);    
+    this._router.navigate(['../viewMore'], {queryParams: { "product": result}})
+  }
 }

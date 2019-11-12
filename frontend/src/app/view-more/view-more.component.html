@@ -1,1 +1,27 @@
-<p>view-more works!</p>
+<div class="container contenido">
+    <div class="container-info">
+        <div class="row">
+            <h3>{{viewProduct.nameProduct}}</h3>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card">
+                    <img class="imgProduct" src="{{viewProduct.image}}">
+                </div>
+            </div>
+            <div class="col-sm-8 info">
+                <div class="row">
+                    <h5 style="font-weight: bold;">Precio:</h5>
+                    <h5>{{viewProduct.price}}$</h5>
+                </div>
+                <div class="row">
+                    <h5 style="font-weight: bold;">Unidades Disponibles:</h5>
+                    <h5>{{viewProduct.unitsAvailable}}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <button [routerLink]="['/viewCatalog']" type="button" class="btn btn-light">Atrás</button>
+        </div>
+    </div>
+</div>

@@ -6,10 +6,10 @@
         <p class="card-text">Unidades Disponibles:{{product.unitsAvailable}}</p>
         <div class="row">
             <div class="col-md-5">
-                <a href="#" class="btn btn-primary btn-sm">Ver más</a>
+                <button class="btn btn-primary btn-sm" (click)="viewMoreProduct(product)">Ver más</button>
             </div>
             <div class="col-md-2 offset-md-1">
-                <a href="#" class="btn btn-warning btn-sm">Añadir</a>
+                <a  class="btn btn-warning btn-sm">Añadir</a>
             </div>
             <div class="col-md-1 offset-md-1">
                 <input type="number" name="points" step="1">
