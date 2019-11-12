@@ -10,3 +10,22 @@ i{
 .navigator{
     border-radius: 5px;
 }
+.notification {
+    background-color:white;
+    color: white;
+    text-decoration: none;
+    padding: 1px 10px;
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+  }
+  
+  .notification .badge {
+    position: absolute;
+    top: 15px;
+    right: -10px;
+    padding: 5px 8px;
+    border-radius: 90%;
+    background:red;
+    color: white;
+  }
