@@ -10,6 +10,7 @@ import { ProductsUiComponent } from './products-ui/products-ui.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import { ViewMoreComponent } from './view-more/view-more.component';
+import { BarraNavegacionService } from './barra-navegacion/barra-navegacion.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import { ViewMoreComponent } from './view-more/view-more.component';
   ],
   providers: [
     HttpClient,
-    HttpClientModule
+    HttpClientModule,
+    BarraNavegacionService,
+    BarraNavegacionComponent
   ],
   bootstrap: [AppComponent]
 })
