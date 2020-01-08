@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'catalog',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CatalogComponent implements OnInit {
 
-  constructor() { }
+  userLogin:String;
+  constructor(private _activateRoute: ActivatedRoute) {}
 
   ngOnInit() {
+    this._activateRoute.queryParams
+      .filter(params => params.userEmail)
+      .subscribe(params => {
+        this.userLogin = params.userEmail;
+      });
   }
 
 }

@@ -9,15 +9,14 @@ import { ProductService} from './product.service';
 })
 export class ProductsComponent {
 
-  @Input() product : any;
+  @Input() userId : string;
 
   products :Product[] = [];
   productsCopy :Product[] = [];
   filterProducts :Product[] = [];
 
   constructor(private _productService: ProductService) 
-  {    
-
+  {
     //Load an show all products registers
     this._productService.loadAllProducts()
     .subscribe(
@@ -54,5 +53,7 @@ export class ProductsComponent {
       this.products = this.filterProducts;
     }
   }
+
+
 }
 

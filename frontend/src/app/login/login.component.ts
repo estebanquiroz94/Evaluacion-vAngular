@@ -16,7 +16,7 @@ export class LoginComponent {
   isValid :boolean;
 
   //Constructor
-  constructor(private _loginService: LoginService, private router: Router){
+  constructor(private _loginService: LoginService, private _router: Router){
   }
 
   //Process info User Login
@@ -39,7 +39,8 @@ export class LoginComponent {
         {
           this.validationMessage = "";
           // Create a new instance for to view products catalog
-          this.router.navigate(['/viewCatalog']);
+                    
+          this._router.navigate(['../viewCatalog'], { queryParams: { userEmail: form.value.email} });
         }
       }
     )

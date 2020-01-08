@@ -5,19 +5,20 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProductService {
-
+  userLogin : String;
   initialUrl: string = 'http://localhost:3008/api/';
   finalUrl: string;
   products: any;
 
   constructor(private _httpClient: HttpClient) 
   {  
-     this.finalUrl = this.initialUrl+"getAllProducts"      
+          
   }
   
   loadAllProducts(){
 
     try {
+      this.finalUrl = this.initialUrl+"getAllProducts";
       console.log('inicia loadAllProducts');
       console.log(this.finalUrl);
 
@@ -30,4 +31,13 @@ export class ProductService {
     
     return this.products;
   }
+
+  SaveTemporalProduct(producto: Product){
+
+  }
+
+  SetUserLogin(user: String){
+    this.userLogin = user;
+  }
+
 }

@@ -12,13 +12,9 @@ export class ViewMoreComponent implements OnInit {
 
   constructor(private _activateRoute: ActivatedRoute) 
   {
-    //console.log("entró hp");
-    //console.log(_activateRoute.snapshot.params);
-    
-    this.viewProduct = _activateRoute.snapshot.params['record'];
-    //console.log(this.viewProduct);
     
   }
+  
   ngOnInit() {
     this._activateRoute
     .queryParams

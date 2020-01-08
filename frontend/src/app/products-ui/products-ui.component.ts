@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import {BarraNavegacionComponent} from '../barra-navegacion/barra-navegacion.component';
+import {ProductService} from '../products/product.service';
 
 
 @Component({
@@ -12,10 +13,8 @@ export class ProductsUiComponent {
 
   @Input() product:any;
 
-  constructor(private _router: Router, private _barraNavegacion: BarraNavegacionComponent) 
-  {
- 
-  }
+  constructor(private _router: Router, private _barraNavegacion: BarraNavegacionComponent, private _productService: ProductService) 
+  { }
   //Show component for view more about this product
   viewMoreProduct(product){
     let result = JSON.stringify(product);    
@@ -23,8 +22,10 @@ export class ProductsUiComponent {
   }
 
   //Add and notificate a new Product
-  AddNewProduct(product){   
-    this._barraNavegacion.markProduct()
+  AddNewProduct(product){ 
+    console.log(product);
+    this._productService.SaveTemporalProduct(product)
   }
-
 }
+
+
