@@ -1,17 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  userLogin : String;
+  @Input() userId : any;
   initialUrl: string = 'http://localhost:3008/api/';
   finalUrl: string;
   products: any;
 
   constructor(private _httpClient: HttpClient) 
-  {  
+  {
           
   }
   
@@ -33,11 +33,13 @@ export class ProductService {
   }
 
   SaveTemporalProduct(producto: Product){
-
+    console.log('debe guardar alguna vaina');
+    console.log(this.userId);
   }
 
-  SetUserLogin(user: String){
-    this.userLogin = user;
+  showUserId(){
+    console.log(this.userId);
+    
   }
 
 }
