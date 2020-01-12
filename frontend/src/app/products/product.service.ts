@@ -39,7 +39,6 @@ export class ProductService {
 
   showUserId(){
     console.log(this.userId);
-    
   }
 
 }
