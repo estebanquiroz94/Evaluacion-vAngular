@@ -9,26 +9,14 @@ import { ActivatedRoute } from '@angular/router';
 export class CatalogComponent implements OnInit {
 
   userLogin:String;
-  constructor(private _activateRoute: ActivatedRoute) {
+  constructor(private _activateRoute: ActivatedRoute) {}
+
+  ngOnInit() {
     this._activateRoute.queryParams
       .filter(params => params.userEmail)
       .subscribe(params => {
         this.userLogin = params.userEmail;
-        console.log('perro');
-        
-        console.log(this.userLogin);
       });
-  }
-
-  ngOnInit() {
-    // this._activateRoute.queryParams
-    //   .filter(params => params.userEmail)
-    //   .subscribe(params => {
-    //     this.userLogin = params.userEmail;
-    //     console.log('caballo');
-        
-    //     console.log(this.userLogin);
-    //   });
   }
 
 }

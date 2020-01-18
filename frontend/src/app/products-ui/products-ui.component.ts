@@ -12,6 +12,7 @@ import {ProductService} from '../products/product.service';
 export class ProductsUiComponent {
 
   @Input() product:any;
+  @Input() userLogin:any;
 
   constructor(private _router: Router, private _barraNavegacion: BarraNavegacionComponent, private _productService: ProductService) 
   { }
@@ -23,8 +24,7 @@ export class ProductsUiComponent {
 
   //Add and notificate a new Product
   AddNewProduct(product){ 
-    console.log(product);
-    this._productService.SaveTemporalProduct(product)
+    this._productService.SaveTemporalProduct(product, this.userLogin)
   }
 }
 

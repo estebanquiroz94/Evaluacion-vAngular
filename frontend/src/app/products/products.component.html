@@ -19,7 +19,7 @@
     <div class="container">
     <div class="row">
         <div *ngFor="let item of products">
-            <products-ui [product]="item"></products-ui>
+            <products-ui [product]="item" [userLogin]= "userId"></products-ui>
         </div>
     </div>
   </div>

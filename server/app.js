@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 var loginRoute = require('./routes/login');
 var productsRoute = require('./routes/products');
 
+
 //configuracion de cabeceras
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
