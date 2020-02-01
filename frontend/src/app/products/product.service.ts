@@ -36,26 +36,17 @@ export class ProductService {
   }
 
   SaveTemporalProduct(producto: Product, user:String){
-    // //Create all url
-    // var finalUrl = this.initialUrl+'products/saveTemporalByUser';
-    
-    // //Instance of parameters that will be send 
-    // let datos = {"email" : "email", "pass": "password"}
-    // console.log('Antes de ejecutar peticion');
-    
-    // //Start petition for API Backend
-    // this.data = this._httpClient.post(finalUrl, datos)
-    // .map((response: Response) => response)
 
     //Create all url
-    var finalUrl = this.initialUrl+'login';
+    var finalUrl = this.initialUrl+'products/saveTemporalByUser';
     
-    //Instance of parameters that will be send 
-    let datos = {"email" : "email", "pass": "password"}
-    console.log('Antes de ejecutar peticion');
+    producto.user = user;
+    
+    var result = JSON.stringify(producto);
+    console.log(result);
     
     //Start petition for API Backend
-    this.data = this._httpClient.post(finalUrl, datos)
+    this.data = this._httpClient.post(finalUrl, result)
     .map((response: Response) => response)
 
     return this.data;

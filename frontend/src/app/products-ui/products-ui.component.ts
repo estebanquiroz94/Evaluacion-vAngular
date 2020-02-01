@@ -3,11 +3,13 @@ import { Router } from '@angular/router';
 import {BarraNavegacionComponent} from '../barra-navegacion/barra-navegacion.component';
 import {ProductService} from '../products/product.service';
 
-import { HttpClient } from '@angular/common/http';
+
+import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import 'rxjs/Rx'
-import { Response } from 'selenium-webdriver/http';
 
 
+@Injectable()
 @Component({
   selector: 'products-ui',
   templateUrl: './products-ui.component.html',
@@ -30,30 +32,18 @@ export class ProductsUiComponent {
   //Add and notificate a new Product
   AddNewProduct(product){ 
 
-    try {
-               
-       //Create all url
-    var finalUrl = this.initialUrl+'products/saveTemporalByUser';
     
-    //Instance of parameters that will be send 
-    let datos = {"email" : "email", "pass": "password"}
-    console.log('Antes de ejecutar peticion');
-    
-    //Start petition for API Backend
-    this.data = this._httpClient.post(finalUrl, datos)
-    .map((response: Response) => response)
-
-    } catch (error) {
-      console.log(error);
-    }   
-
-    return this.data;
-
-    
+    this._productService.SaveTemporalProduct(product, this.userLogin)
+    .subscribe(
+      (data: Response) => 
+      {             
+        console.log(data);
+      }
+    )
   }
     
 
-    // return this._productService.SaveTemporalProduct(product, this.userLogin)
+     
   }
 
 
