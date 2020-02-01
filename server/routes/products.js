@@ -6,6 +6,7 @@ var api = express.Router();
 
 console.log('Instance function Products');
 
-api.get('/getAllProducts',productsController.getAllProducts)
+api.get('/products/getAllProducts',productsController.getAllProducts)
+api.post('/products/saveTemporalByUser',productsController.SaveTemporalByUser)
 
 module.exports = api;

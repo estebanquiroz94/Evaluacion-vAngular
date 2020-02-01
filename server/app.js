@@ -26,6 +26,5 @@ app.use((req, res, next) => {
 //rutas base
 app.use('/api', loginRoute);
 app.use('/api', productsRoute);
-// console.log('finaliza proceso de app.js');
 
 module.exports = app;

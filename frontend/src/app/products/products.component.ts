@@ -25,14 +25,12 @@ export class ProductsComponent {
         data.forEach(element => {
           this.products.push(element)
         });        
-        
       })
-
       this.productsCopy = this.products;
   }
 
   applyFilterProducts(param: any){
-    
+
     if(param.target.value == "")
     {
     this.products = [];
@@ -53,7 +51,5 @@ export class ProductsComponent {
       this.products = this.filterProducts;
     }
   }
-
-
 }
 

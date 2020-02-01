@@ -3,6 +3,7 @@
 //Import user model
 
 var product = require('../models/product');
+var shopCar = require('../models/shopCar');
 
 function getAllProducts(req, res){
     try {
@@ -35,4 +36,10 @@ function getAllProducts(req, res){
     }
 }
 
-module.exports = {getAllProducts}
+function SaveTemporalByUser(req, res){
+    console.log('va guardar alguna mierda');
+    
+    res.status(200).send(true);
+}
+
+module.exports = {getAllProducts, SaveTemporalByUser}
