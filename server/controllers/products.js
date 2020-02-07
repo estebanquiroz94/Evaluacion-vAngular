@@ -3,7 +3,7 @@
 //Import user model
 
 var product = require('../models/product');
-var shopCar = require('../models/shopCar');
+var ShopCar = require('../models/shopCar');
 
 function getAllProducts(req, res){
     try {
@@ -37,9 +37,27 @@ function getAllProducts(req, res){
 }
 
 function SaveTemporalByUser(req, res){
-    console.log('va guardar alguna mierda');
-    
-    res.status(200).send(true);
+    console.log(req.body);
+    console.log(req.body.price);
+
+    ShopCar.create(req.body, function (err, product) {
+        if(err){
+            res.status(500).send({message:"Error en la petición."});
+        }
+        else{
+            if(!product){
+                res.status(404).send({message:"No se pudo agregar el producto"});
+            }
+            else{
+              console.log('Producto agregado correctamente');
+                res.status(200).send(
+                  {
+                    mensaje: "Producto agregado correctamente",
+                    id:product._id
+                  });
+            }
+        }
+      });
 }
 
 module.exports = {getAllProducts, SaveTemporalByUser}

@@ -46,7 +46,7 @@ export class ProductService {
     console.log(result);
     
     //Start petition for API Backend
-    this.data = this._httpClient.post(finalUrl, result)
+    this.data = this._httpClient.post(finalUrl, producto)
     .map((response: Response) => response)
 
     return this.data;
