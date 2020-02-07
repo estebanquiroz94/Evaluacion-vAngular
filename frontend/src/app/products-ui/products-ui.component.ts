@@ -31,19 +31,16 @@ export class ProductsUiComponent {
 
   //Add and notificate a new Product
   AddNewProduct(product){ 
-
-    
     this._productService.SaveTemporalProduct(product, this.userLogin)
     .subscribe(
       (data: Response) => 
       {             
-        console.log(data);
+        if(data){
+          this._barraNavegacion.markProduct()
+        }
       }
     )
   }
-    
-
-     
   }
 
 

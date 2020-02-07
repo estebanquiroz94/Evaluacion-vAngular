@@ -63,8 +63,7 @@ function SaveTemporalByUser(req, res){
 function getProductsByUser(req, res){
     try {
         console.log('Start Get By User');
-        
-        ShopCar.find(function(err, productsFound)
+        ShopCar.find({ user:  req.query.user},function(err,productsFound)
         {
             //Validation for error
             if(err)
