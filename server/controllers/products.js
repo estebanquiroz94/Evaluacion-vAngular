@@ -23,7 +23,7 @@ function getAllProducts(req, res){
                 if(!productsFound)
                 {
                     console.log('Not Found');
-                    res.status(404).send({answerPetiton: 'Can not found user'})
+                    res.status(404).send({answerPetiton: 'Can not found products'})
                 }
             }  
             console.log('Before Return');
@@ -60,4 +60,35 @@ function SaveTemporalByUser(req, res){
       });
 }
 
-module.exports = {getAllProducts, SaveTemporalByUser}
+function getProductsByUser(req, res){
+    try {
+        console.log('Start Get By User');
+        
+        ShopCar.find(function(err, productsFound)
+        {
+            //Validation for error
+            if(err)
+            {
+                console.log('An error ocurred');
+                res.status(500).send({answerPetiton: 'Error en la petición'})
+            }
+            else
+            {
+                //User not found
+                if(!productsFound)
+                {
+                    console.log('Not Found');
+                    res.status(404).send({answerPetiton: 'Can not found products by user'})
+                }
+            }  
+            console.log('Before Return');
+            res.status(200).send(productsFound)
+    
+        });
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports = {getAllProducts, SaveTemporalByUser, getProductsByUser}

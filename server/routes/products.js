@@ -8,5 +8,6 @@ console.log('Instance function Products');
 
 api.get('/products/getAllProducts',productsController.getAllProducts)
 api.post('/products/saveTemporalByUser',productsController.SaveTemporalByUser)
+api.get('/products/getProductsByUser',productsController.getProductsByUser)
 
 module.exports = api;
