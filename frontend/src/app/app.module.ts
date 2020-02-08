@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import { ViewMoreComponent } from './view-more/view-more.component';
 import { BarraNavegacionService } from './barra-navegacion/barra-navegacion.service';
+import { ShopCarComponent } from './shop-car/shop-car.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BarraNavegacionService } from './barra-navegacion/barra-navegacion.serv
     BarraNavegacionComponent,
     ProductsComponent,
     ProductsUiComponent,
-    ViewMoreComponent
+    ViewMoreComponent,
+    ShopCarComponent
   ],
   imports: [
     BrowserModule,
