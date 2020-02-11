@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BarraNavegacionService } from './barra-navegacion.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'barra-navegacion',
@@ -8,7 +9,7 @@ import { BarraNavegacionService } from './barra-navegacion.service';
 })
 export class BarraNavegacionComponent implements OnInit {
   @Input() userId : string;
-  constructor(private _barraService: BarraNavegacionService) 
+  constructor(private _barraService: BarraNavegacionService, private _router: Router) 
   {
 
   }
@@ -29,7 +30,7 @@ markProduct(){
       }
       )
   }
-puta(){
-  alert('funciona gonorrea')
-}
+TemporalProductsByUser(userId: String){
+  this._router.navigate(['../ShopCar'], {queryParams: { "param": userId}});
+  }
 }

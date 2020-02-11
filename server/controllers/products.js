@@ -62,28 +62,32 @@ function SaveTemporalByUser(req, res){
 
 function getProductsByUser(req, res){
     try {
-        console.log('Start Get By User');
-        ShopCar.find({ user:  req.query.user},function(err,productsFound)
-        {
-            //Validation for error
-            if(err)
-            {
-                console.log('An error ocurred');
-                res.status(500).send({answerPetiton: 'Error en la petición'})
-            }
-            else
-            {
-                //User not found
-                if(!productsFound)
-                {
-                    console.log('Not Found');
-                    res.status(404).send({answerPetiton: 'Can not found products by user'})
-                }
-            }  
-            console.log('Before Return');
-            res.status(200).send(productsFound)
+        console.log('entró');
+        console.log(req.query.user);
+        
+            
+        // console.log('Start Get By User');
+        // ShopCar.find({ user:  req.query.user},function(err,productsFound)
+        // {
+        //     //Validation for error
+        //     if(err)
+        //     {
+        //         console.log('An error ocurred');
+        //         res.status(500).send({answerPetiton: 'Error en la petición'})
+        //     }
+        //     else
+        //     {
+        //         //User not found
+        //         if(!productsFound)
+        //         {
+        //             console.log('Not Found');
+        //             res.status(404).send({answerPetiton: 'Can not found products by user'})
+        //         }
+        //     }  
+        //     console.log('Before Return');
+        //     res.status(200).send(productsFound)
     
-        });
+        // });
 
     } catch (error) {
         console.log(error);

@@ -1,1 +1,29 @@
-<p>shop-car works!</p>
+<div>
+    <barra-navegacion [userId]="userLogin"></barra-navegacion>
+</div>
+<br>
+<div class ="container contenido">
+    <div class="row">
+        <div class="col-sm-9">
+            <h2>Carrito de compras!</h2>
+        </div>
+    </div>
+<hr>
+<br>
+    <div class="container">
+        <div class="row">
+                <div *ngFor="let item of productsCopy">
+                <div class="product card" style="width: 16rem;">
+                        <!-- <img src={{product.image}} class="card-img-top img-product" alt="....."> -->
+                            <div class="card-body">
+                                <h5 class="card-title">{{item.nameProduct}}</h5>
+                                <!--<p class="card-text">Precio: {{product.price}} $</p>
+                                <p class="card-text">Unidades Disponibles:{{product.unitsAvailable}}</p> -->
+                                <div class="row">   x   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+    </div>
+</div>
