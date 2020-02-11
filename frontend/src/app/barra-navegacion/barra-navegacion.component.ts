@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BarraNavegacionService } from './barra-navegacion.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { BarraNavegacionService } from './barra-navegacion.service';
   styleUrls: ['./barra-navegacion.component.css']
 })
 export class BarraNavegacionComponent implements OnInit {
-
+  @Input() userId : string;
   constructor(private _barraService: BarraNavegacionService) 
   {
 
@@ -29,4 +29,7 @@ markProduct(){
       }
       )
   }
+puta(){
+  alert('funciona gonorrea')
+}
 }
