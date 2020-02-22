@@ -17,8 +17,6 @@ export class ShopCarService {
 
 
   loadProductsByUser(user: string){
-    alert('va leer alguito');
-    alert(user);
     try {
       this.finalUrl = this.initialUrl+"/products/getProductsByUser";
       console.log(this.finalUrl);

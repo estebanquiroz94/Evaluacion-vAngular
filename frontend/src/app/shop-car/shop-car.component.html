@@ -12,18 +12,36 @@
 <br>
     <div class="container">
         <div class="row">
-                <div *ngFor="let item of productsCopy">
-                <div class="product card" style="width: 16rem;">
-                        <!-- <img src={{product.image}} class="card-img-top img-product" alt="....."> -->
-                            <div class="card-body">
-                                <h5 class="card-title">{{item.nameProduct}}</h5>
-                                <!--<p class="card-text">Precio: {{product.price}} $</p>
-                                <p class="card-text">Unidades Disponibles:{{product.unitsAvailable}}</p> -->
-                                <div class="row">   x   
-                                </div>
-                            </div>
+            <div class="col-lg-6">
+            <div class="holi card">
+            <div class="product hp" style="width: 16rem;">
+                <div *ngFor="let product of productsCopy">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img src={{product.image}} class="card-img-top img-product" alt=".....">
                         </div>
+                    <div class="col-sm-6">
+                        <!-- <div class="card-body"> -->
+                            <h5 class="card-title">{{product.nameProduct}}</h5>
+                            <p class="card-text">Unidades:{{product.unitsAvailable}}</p> 
+                        <!-- </div>     -->
                     </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-sm-11 offset-md-1">
+                        <p class="card-text">Subtotal: {{product.price}} $</p>
+                    </div>
+                    </div>
+                <hr>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="col-lg-4">
+<h3>SubTotal:</h3>
+            </div>
+        </div>
         </div>
     </div>
 </div>
