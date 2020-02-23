@@ -17,10 +17,12 @@
     <hr>
     <br>
     <div class="container">
-    <div class="row">
-        <div *ngFor="let item of products">
-            <products-ui [product]="item" [userLogin]= "userId"></products-ui>
+      <div class="scrollable">
+        <div class="row">
+            <div *ngFor="let item of products">
+                <products-ui [product]="item" [userLogin]= "userId"></products-ui>
+            </div>
         </div>
+      </div>
     </div>
-  </div>
   </div>
