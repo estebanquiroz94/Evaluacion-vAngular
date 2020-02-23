@@ -7,8 +7,8 @@ var shopCarSchema = schema({
     nameProduct: String,
     image: String,
     price: String,
-    unitsAvailable: String,
-    user: String
+    user: String,
+    quantity: String
 })
 
 module.exports = mongoose.model('shopCar', shopCarSchema);
