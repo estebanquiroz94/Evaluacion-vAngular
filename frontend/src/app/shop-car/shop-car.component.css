@@ -39,3 +39,8 @@ input[type="number"] {
     overflow: scroll;
     height: 350px;
  }
+ button{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    background-color: rgb(230,230,230);
+}

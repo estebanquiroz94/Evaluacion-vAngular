@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class BarraNavegacionComponent implements OnInit {
   @Input() userId : string;
+  loginUser: String;
   constructor(private _barraService: BarraNavegacionService, private _router: Router) 
   {
 
@@ -16,21 +17,24 @@ export class BarraNavegacionComponent implements OnInit {
  private productCounter: number = 1;
   public productCounterCopy: number;
   ngOnInit() {
-    
-    
+    this.loginUser = this.userId;
   }
 
 markProduct(){
     this._barraService.loadAddProducts()
     .subscribe(
       (data: any) =>{
-        console.log(this.productCounter);
+        console.log(this.productCounter); 
         
         this.productCounter = data;
-      }
-      )
+      })
   }
 TemporalProductsByUser(userId: String){
+  this.loginUser = userId;
   this._router.navigate(['../ShopCar'], {queryParams: { "param": userId}});
+  }
+
+GoBackStart(loginUser: String){
+  this._router.navigate(['../viewCatalog'], {queryParams: { userEmail: loginUser}})
   }
 }

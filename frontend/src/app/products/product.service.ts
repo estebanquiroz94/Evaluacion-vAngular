@@ -35,12 +35,14 @@ export class ProductService {
     
   }
 
-  SaveTemporalProduct(producto: Product, user:String){
+  SaveTemporalProduct(producto: Product, user:String, quantity: number){
 
     //Create all url
     var finalUrl = this.initialUrl+'products/saveTemporalByUser';
     
     producto.user = user;
+    producto.quantity = quantity;
+    producto.unitsAvailable = null;
     
     //Start petition for API Backend
     this.data = this._httpClient.post(finalUrl, producto)
