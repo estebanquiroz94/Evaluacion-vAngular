@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'view-more',
@@ -9,8 +9,9 @@ import { ActivatedRoute } from '@angular/router';
 export class ViewMoreComponent implements OnInit {
 
   viewProduct: Product;
+  loginUser: String;
 
-  constructor(private _activateRoute: ActivatedRoute) 
+  constructor(private _activateRoute: ActivatedRoute, private _router: Router) 
   {
     
   }
@@ -20,7 +21,12 @@ export class ViewMoreComponent implements OnInit {
     .queryParams
     .subscribe(params => {
         this.viewProduct = JSON.parse(params['product']) as Product;
+        this.loginUser = params['userLogin'];        
     });
   }
+
+  GoBackStart(loginUser: String){
+    this._router.navigate(['../viewCatalog'], {queryParams: { userEmail: loginUser}})
+    }
 
 }

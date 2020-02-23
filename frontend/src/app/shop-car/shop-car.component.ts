@@ -23,17 +23,15 @@ export class ShopCarComponent implements OnInit {
 
 
   ngOnInit() {
-    this._activateRoute
-    .queryParams
+    this._activateRoute.queryParams
     .subscribe(params => {
-        this.user = params['param'];
+        this.user = params['userEmail'];
         this.userLogin = this.user;
         this.TemporalProductsByUser(this.user)
     });
   }
   
   TemporalProductsByUser(user: string){
-    alert(user)
         //Load an show all products registers
         this._shopCarService.loadProductsByUser(user)
         .subscribe(

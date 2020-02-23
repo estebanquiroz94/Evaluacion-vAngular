@@ -29,9 +29,9 @@ markProduct(){
         this.productCounter = data;
       })
   }
-TemporalProductsByUser(userId: String){
-  this.loginUser = userId;
-  this._router.navigate(['../ShopCar'], {queryParams: { "param": userId}});
+TemporalProductsByUser(loginUser: String){
+  this.loginUser = loginUser;
+  this._router.navigate(['../ShopCar'], {queryParams: { userEmail: loginUser}});
   }
 
 GoBackStart(loginUser: String){

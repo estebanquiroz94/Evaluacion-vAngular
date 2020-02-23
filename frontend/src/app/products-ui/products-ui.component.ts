@@ -28,8 +28,11 @@ export class ProductsUiComponent {
   { }
   //Show component for view more about this product
   viewMoreProduct(product){
-    let result = JSON.stringify(product);    
-    this._router.navigate(['../viewMore'], {queryParams: { "product": result}})
+    // product.userLogin = this.userLogin;
+    let result = JSON.stringify(product);
+    console.log(result);
+    
+    this._router.navigate(['../viewMore'], {queryParams: { "product": result , "userLogin": this.userLogin}})
   }
 
   //Add and notificate a new Product
