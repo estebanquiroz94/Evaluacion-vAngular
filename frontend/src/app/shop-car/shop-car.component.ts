@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ShopCarService} from './shop-car.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'shop-car',
@@ -18,7 +19,7 @@ export class ShopCarComponent implements OnInit {
   userLogin:String;
   total:number = 0;
 
-  constructor(private _shopCarService: ShopCarService, private _activateRoute: ActivatedRoute) {
+  constructor(private _shopCarService: ShopCarService, private _activateRoute: ActivatedRoute, private _router: Router) {
     
    }
 
@@ -56,6 +57,9 @@ export class ShopCarComponent implements OnInit {
       (data: Response) =>{
         if(data["answer"] == "ok")
       {
+        // Create a new instance for to view products catalog
+                    
+        this._router.navigate(['../viewCatalog'], { queryParams: { userEmail: this.userLogin} });
         this.TemporalProductsByUser(user);
         this.total = 0;
       }

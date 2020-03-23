@@ -19,7 +19,6 @@ export class ShopCarService {
   loadProductsByUser(user: string){
     try {
       var finalUrl = this.initialUrl+"products/getProductsByUser";
-      console.log(finalUrl);
       var params = new HttpParams().set("user", user);
       this.products = this._httpClient.get<Product[]>(finalUrl,{params})
       .map((response: Product[]) => response)                    
@@ -35,7 +34,7 @@ export class ShopCarService {
   DeleteTemporalByUser(user: string){
     try {
       var finalUrldelete = this.initialUrl+'products/DeleteTemporalByUser';
-      alert(finalUrldelete)
+
       this.data = this._httpClient.post(finalUrldelete, {user:user})
       .map((responsesita: Response) => responsesita)
 

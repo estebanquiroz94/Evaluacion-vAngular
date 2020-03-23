@@ -26,9 +26,9 @@ export class ProductsUiComponent {
   ngOnInit() { }
   constructor(private _router: Router, private _barraNavegacion: BarraNavegacionComponent, private _productService: ProductService, private _httpClient: HttpClient) 
   { }
+  
   //Show component for view more about this product
   viewMoreProduct(product){
-    // product.userLogin = this.userLogin;
     let result = JSON.stringify(product);
     console.log(result);
     
@@ -42,7 +42,7 @@ export class ProductsUiComponent {
       (data: Response) => 
       {          
         if(data["answer"] == "ok"){
-          alert("producto agregado correctamente")          
+          alert("Producto Agregado")          
           this._barraNavegacion.markProduct()
         }
       }
