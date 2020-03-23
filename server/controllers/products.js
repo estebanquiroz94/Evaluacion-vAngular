@@ -38,20 +38,17 @@ function getAllProducts(req, res){
 
 function SaveTemporalByUser(req, res){
     console.log(req.body);
-    console.log(req.body.price);
-
-
-
+    
     ShopCar.create(req.body, function (err, product) {
         if(err){
-            res.status(500).send({message:"Error en la petición."});
+            res.status(500).send({message:"Fail Peticion."});
         }
         else{
             if(!product){
-                res.status(404).send({message:"No se pudo agregar el producto"});
+                res.status(404).send({message:"Don't add product"});
             }
             else{
-              console.log('Producto agregado correctamente');
+              console.log('ok add product');
                 res.status(200).send(
                   {
                     answer: "ok",
@@ -64,12 +61,9 @@ function SaveTemporalByUser(req, res){
 
 function getProductsByUser(req, res){
     try {
-        console.log('entró');
-        console.log(req.query.user);
-        
-        //getProductById(req.body._id)
-
+        console.log(req.query.user);      
         console.log('Start Get By User');
+        
         ShopCar.find({ user:  req.query.user},function(err,productsFound)
         {
             //Validation for error
@@ -134,33 +128,24 @@ function getProductsByUser(req, res){
 
 function DeleteTemporalByUser(req, res){
     try {
-        console.log('entró a eliminar registro para:');
-        console.log(req.body.user);
-        
+        console.log('Start DeleteTemporalByUser');
         
         ShopCar.deleteMany({ user:  "jq@gmail.com"}, function(err, response){
             console.log(response);
             
             if(err){
-               console.log('tuvoerror');
+               console.log('an error ocurred');
                
-                res.status(500).send({answer:"Error."});
+                res.status(500).send({answer:"fail"});
               }
               else{
-                console.log('elimino bien');
+                console.log('Delete succes');
                 
                 res.status(200).send({answer: 'ok'});
               }
-              console.log('pasaporakihp');
-              
         });
 
-        console.log('salerojo');
-        
-
     } catch (error) {
-        console.log('HPPPPPPPPPPPPPPPPPPPPPPPPPPP');
-        
         res.status(200).send({answer: error});
     }
 }
