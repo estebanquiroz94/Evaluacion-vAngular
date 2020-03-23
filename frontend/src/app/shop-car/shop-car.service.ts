@@ -7,8 +7,8 @@ import 'rxjs/Rx'
 export class ShopCarService {
 
   initialUrl: string = 'http://localhost:3008/api/';
-  finalUrl: string;
   products: any;
+  data:any;
 
   constructor(private _httpClient: HttpClient) 
   {
@@ -18,17 +18,30 @@ export class ShopCarService {
 
   loadProductsByUser(user: string){
     try {
-      this.finalUrl = this.initialUrl+"/products/getProductsByUser";
-      console.log(this.finalUrl);
+      var finalUrl = this.initialUrl+"products/getProductsByUser";
+      console.log(finalUrl);
       var params = new HttpParams().set("user", user);
-      this.products = this._httpClient.get<Product[]>(this.finalUrl,{params})
-      .map((response: Product[]) => response)            
+      this.products = this._httpClient.get<Product[]>(finalUrl,{params})
+      .map((response: Product[]) => response)                    
+
+    } catch (error) {
+      console.log(error);
+    } 
+    
+    return this.products;
+
+  }
+
+  DeleteTemporalByUser(user: string){
+    try {
+      var finalUrldelete = this.initialUrl+'products/DeleteTemporalByUser';
+      alert(finalUrldelete)
+      this.data = this._httpClient.post(finalUrldelete, {user:user})
+      .map((responsesita: Response) => responsesita)
 
     } catch (error) {
       console.log(error);
     }   
-
-    return this.products;
-    
+    return this.data;
   }
 }

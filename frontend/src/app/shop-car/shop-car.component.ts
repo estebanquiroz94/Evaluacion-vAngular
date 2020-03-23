@@ -16,6 +16,7 @@ export class ShopCarComponent implements OnInit {
   subTotalPrice :number;
   subTotal :number;
   userLogin:String;
+  total:number = 0;
 
   constructor(private _shopCarService: ShopCarService, private _activateRoute: ActivatedRoute) {
     
@@ -32,20 +33,35 @@ export class ShopCarComponent implements OnInit {
   }
   
   TemporalProductsByUser(user: string){
+    this.productsCopy = [];
+    this.products = [];
         //Load an show all products registers
         this._shopCarService.loadProductsByUser(user)
         .subscribe(
           (data: Product[]) =>{
-    
             data.forEach(element => {
-              // alert((element.price * element.quantity));
               this.subTotal = (element.price * element.quantity);
-              // alert(this.subTotal)
               this.subTotalPrice = (Number(this.subTotalPrice)+1 + this.subTotal)
-              // alert(this.subTotalPrice.toString())
               this.products.push(element)
+              this.total = this.total + this.subTotal;
             });        
           })
           this.productsCopy = this.products;
-        }
+  }
+  
+  DeleteTeporalByUser(user: string){
+    //Load an show all products registers
+    this._shopCarService.DeleteTemporalByUser(user)
+    .subscribe(
+      (data: Response) =>{
+        if(data["answer"] == "ok")
+      {
+        this.TemporalProductsByUser(user);
+        this.total = 0;
+      }
+      else{
+        alert(data)
+      }
+    })
+  }
 }

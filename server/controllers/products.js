@@ -67,7 +67,7 @@ function getProductsByUser(req, res){
         console.log('entró');
         console.log(req.query.user);
         
-        getProductById(req.body._id)
+        //getProductById(req.body._id)
 
         console.log('Start Get By User');
         ShopCar.find({ user:  req.query.user},function(err,productsFound)
@@ -97,39 +97,71 @@ function getProductsByUser(req, res){
     }
 }
 
-function getProductById(id){
-    try {
-        console.log('entró');
-        console.log(req.query.user);
+// function getProductById(id){
+//     try {
+//         console.log('entró');
+//         console.log(req.query.user);
         
-        getProductById(req.body._id)
+//         getProductById(req.body._id)
 
-        console.log('Start Get By User');
-        ShopCar.find({ user:  req.query.user},function(err,productsFound)
-        {
-            //Validation for error
-            if(err)
-            {
-                console.log('An error ocurred');
-                res.status(500).send({answerPetiton: 'Error en la petición'})
-            }
-            else
-            {
-                //User not found
-                if(!productsFound)
-                {
-                    console.log('Not Found');
-                    res.status(404).send({answerPetiton: 'Can not found products by user'})
-                }
-            }  
-            console.log('Before Return');
-            res.status(200).send(productsFound)
+//         console.log('Start Get By User');
+//         ShopCar.find({ user:  req.query.user},function(err,productsFound)
+//         {
+//             //Validation for error
+//             if(err)
+//             {
+//                 console.log('An error ocurred');
+//                 res.status(500).send({answerPetiton: 'Error en la petición'})
+//             }
+//             else
+//             {
+//                 //User not found
+//                 if(!productsFound)
+//                 {
+//                     console.log('Not Found');
+//                     res.status(404).send({answerPetiton: 'Can not found products by user'})
+//                 }
+//             }  
+//             console.log('Before Return');
+//             res.status(200).send(productsFound)
     
+//         });
+
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+
+function DeleteTemporalByUser(req, res){
+    try {
+        console.log('entró a eliminar registro para:');
+        console.log(req.body.user);
+        
+        
+        ShopCar.deleteMany({ user:  "jq@gmail.com"}, function(err, response){
+            console.log(response);
+            
+            if(err){
+               console.log('tuvoerror');
+               
+                res.status(500).send({answer:"Error."});
+              }
+              else{
+                console.log('elimino bien');
+                
+                res.status(200).send({answer: 'ok'});
+              }
+              console.log('pasaporakihp');
+              
         });
 
+        console.log('salerojo');
+        
+
     } catch (error) {
-        console.log(error);
+        console.log('HPPPPPPPPPPPPPPPPPPPPPPPPPPP');
+        
+        res.status(200).send({answer: error});
     }
 }
-
-module.exports = {getAllProducts, SaveTemporalByUser, getProductsByUser}
+module.exports = {getAllProducts, SaveTemporalByUser, getProductsByUser, DeleteTemporalByUser}

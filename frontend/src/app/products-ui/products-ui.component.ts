@@ -21,7 +21,7 @@ export class ProductsUiComponent {
   data: any;
   @Input() product:any;
   @Input() userLogin:any;
-  quantity: any;
+  quantity: any = 1;
 
   ngOnInit() { }
   constructor(private _router: Router, private _barraNavegacion: BarraNavegacionComponent, private _productService: ProductService, private _httpClient: HttpClient) 
@@ -40,8 +40,9 @@ export class ProductsUiComponent {
     this._productService.SaveTemporalProduct(product, this.userLogin, this.quantity)
     .subscribe(
       (data: Response) => 
-      {            
-        if(data){
+      {          
+        if(data["answer"] == "ok"){
+          alert("producto agregado correctamente")          
           this._barraNavegacion.markProduct()
         }
       }
