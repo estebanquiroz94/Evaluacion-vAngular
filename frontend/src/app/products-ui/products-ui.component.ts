@@ -26,12 +26,11 @@ export class ProductsUiComponent {
   ngOnInit() { }
   constructor(private _router: Router, private _barraNavegacion: BarraNavegacionComponent, private _productService: ProductService, private _httpClient: HttpClient) 
   { }
-  
+
   //Show component for view more about this product
   viewMoreProduct(product){
     let result = JSON.stringify(product);
     console.log(result);
-    
     this._router.navigate(['../viewMore'], {queryParams: { "product": result , "userLogin": this.userLogin}})
   }
 
@@ -40,10 +39,14 @@ export class ProductsUiComponent {
     this._productService.SaveTemporalProduct(product, this.userLogin, this.quantity)
     .subscribe(
       (data: Response) => 
-      {          
+      {
         if(data["answer"] == "ok"){
-          alert("Producto Agregado")          
+          alert("Producto Agregado")
           this._barraNavegacion.markProduct()
+        }else
+        if(data["answer"] == "notavailable"){
+          let message = "Solo quedan "+data["unitsAvailable"] +" unidades disponibles";
+          alert(message)
         }
       }
     )

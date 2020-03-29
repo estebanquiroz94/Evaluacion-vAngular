@@ -39,14 +39,15 @@ export class ProductService {
 
     //Create all url
     var finalUrl = this.initialUrl+'products/saveTemporalByUser';
-    
+    let currentUnits = producto.unitsAvailable
     producto.user = user;
     producto.quantity = quantity;
     producto.unitsAvailable = null;
-    
+
     //Start petition for API Backend
     this.data = this._httpClient.post(finalUrl, producto)
     .map((response: Response) => response)
+    producto.unitsAvailable = currentUnits;
 
     return this.data;
     }    
