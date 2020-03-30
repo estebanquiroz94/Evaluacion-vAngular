@@ -43,4 +43,17 @@ export class ShopCarService {
     }   
     return this.data;
   }
+
+  BuyProducts(user: string){
+    try {
+      var finalUrldelete = this.initialUrl+'products/BuyByUser';
+
+      this.data = this._httpClient.post(finalUrldelete, {user:user})
+      .map((responsesita: Response) => responsesita)
+
+    } catch (error) {
+      console.log(error);
+    }   
+    return this.data;
+  }
 }

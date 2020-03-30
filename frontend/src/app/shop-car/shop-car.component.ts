@@ -19,10 +19,7 @@ export class ShopCarComponent implements OnInit {
   userLogin:String;
   total:number = 0;
 
-  constructor(private _shopCarService: ShopCarService, private _activateRoute: ActivatedRoute, private _router: Router) {
-    
-   }
-
+  constructor(private _shopCarService: ShopCarService, private _activateRoute: ActivatedRoute, private _router: Router) {}
 
   ngOnInit() {
     this._activateRoute.queryParams
@@ -45,7 +42,7 @@ export class ShopCarComponent implements OnInit {
               this.subTotalPrice = (Number(this.subTotalPrice)+1 + this.subTotal)
               this.products.push(element)
               this.total = this.total + this.subTotal;
-            });        
+            });
           })
           this.productsCopy = this.products;
   }
@@ -58,13 +55,31 @@ export class ShopCarComponent implements OnInit {
         if(data["answer"] == "ok")
       {
         // Create a new instance for to view products catalog
-                    
         this._router.navigate(['../viewCatalog'], { queryParams: { userEmail: this.userLogin} });
         this.TemporalProductsByUser(user);
         this.total = 0;
       }
       else{
         alert(data)
+      }
+    })
+  }
+
+  BuyProducts(user: string){
+    this._shopCarService.BuyProducts(user)
+    .subscribe(
+      (data: Response) =>{
+        if(data["answer"] == "ok")
+      {
+        this.DeleteTeporalByUser(user);
+        alert(data["message"]);
+        this._router.navigate(['../viewCatalog'], { queryParams: { userEmail: this.userLogin} });
+        this.total = 0;
+      }
+      else{
+        if(data["answer"] == "bad"){
+          alert(data["message"])
+        }
       }
     })
   }

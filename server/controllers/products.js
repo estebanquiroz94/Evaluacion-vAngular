@@ -41,17 +41,9 @@ async function SaveTemporalByUser(req, res){
     console.log(req.body);
     
     //Validate if product is avaliable
-    var availableUnits = await getProductById(req.body._id)
+    var product = await getProductById(req.body._id)   
 
-    console.log('este: '+availableUnits+' menos:'+req.body.quantity);
-    
-
-    var totalAvailable = availableUnits - req.body.quantity;
-
-    console.log('da esto: '+totalAvailable);
-    
-
-    if(totalAvailable >= 0)
+    if(product.unitsAvailable >= req.body.quantity)
     {
         console.log('debe guardar');
         
@@ -119,7 +111,7 @@ function getProductsByUser(req, res){
 async function getProductById(id, res){
     try {
             var result = await product.findById({ _id:  id}).exec()            
-            return result.unitsAvailable;
+            return result;
 
     } catch (error) {
         console.log(error);
@@ -128,11 +120,12 @@ async function getProductById(id, res){
 
 function DeleteTemporalByUser(req, res){
     try {
+
         console.log('Start DeleteTemporalByUser');
-        
-        ShopCar.deleteMany({ user:  "jq@gmail.com"}, function(err, response){
+
+        ShopCar.deleteMany({ user:  req.body.user}, function(err, response){
             console.log(response);
-            
+
             if(err){
                console.log('an error ocurred');
                
@@ -149,4 +142,59 @@ function DeleteTemporalByUser(req, res){
         res.status(200).send({answer: error});
     }
 }
-module.exports = {getAllProducts, SaveTemporalByUser, getProductsByUser, DeleteTemporalByUser}
+
+async function UpdateUnitsAvailables(req, res){
+    //Actualiza las unidades disponibles en el inventario
+    try {
+        await product.updateOne({_id: req._id}, {unitsAvailable: req.unitsAvailable})
+    } catch (error) {
+        
+    }
+}
+
+async function BuyByUser(req, res){
+
+    console.log('inicia BuyByUser');
+    console.log(req.body.user);
+    
+    try {
+        var productsByUser = await ShopCar.find({ user:  req.body.user}).exec()            
+        
+        //Validate each elemet available
+        productsByUser.forEach( async (element) => {
+
+            var product = await getProductById(element._id);
+            
+            //Se  verifica que la cantidad actual, sea mayor o igual a la que se va vender
+            if(product.unitsAvailable >= element.quantity){
+                console.log('validó');
+                let unitsAvailable = product.unitsAvailable - element.quantity;
+                let update = {
+                    _id:element._id,
+                    unitsAvailable: unitsAvailable
+                }
+                
+                await UpdateUnitsAvailables(update);
+                
+            }else
+            {
+                res.status(200).send(
+                {
+                        answer:"bad",
+                        message: "Cantidades insuficientes en inventario"
+                });
+            }
+
+        });
+
+        res.status(200).send(
+            {
+                    answer:"ok",
+                    message: "Proceso ejecutado con éxito"
+            });
+
+    } catch (error) {
+        
+    }
+}
+module.exports = {getAllProducts, SaveTemporalByUser, getProductsByUser, DeleteTemporalByUser, BuyByUser}
